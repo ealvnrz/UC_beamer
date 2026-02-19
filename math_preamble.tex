@@ -1,0 +1,76 @@
+﻿% !TeX root = main.tex
+% Entornos matem?ticos reutilizables para el curso
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{listings}
+
+% Nombres en espa?ol para bloques de teoremas de Beamer
+\deftranslation[to=spanish]{Theorem}{Teorema}
+\deftranslation[to=spanish]{Lemma}{Lema}
+\deftranslation[to=spanish]{Corollary}{Corolario}
+\deftranslation[to=spanish]{Definition}{Definici?n}
+\deftranslation[to=spanish]{Example}{Ejemplo}
+\deftranslation[to=Spanish]{Theorem}{Teorema}
+\deftranslation[to=Spanish]{Lemma}{Lema}
+\deftranslation[to=Spanish]{Corollary}{Corolario}
+\deftranslation[to=Spanish]{Definition}{Definici?n}
+\deftranslation[to=Spanish]{Example}{Ejemplo}
+
+% Beamer ya define theorem/lemma/corollary/definition/example.
+% Solo definimos los que no existan para evitar conflictos.
+\makeatletter
+\@ifundefined{proposition}{\newtheorem{proposition}{Proposici?n}[section]}{}
+\@ifundefined{remark}{\newtheorem{remark}{Observaci?n}[section]}{}
+\makeatother
+
+% Macros de notaci?n de regresi?n
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\Cov}{\operatorname{Cov}}
+\newcommand{\Corr}{\operatorname{Corr}}
+\newcommand{\Normal}{\mathcal{N}}
+\newcommand{\R}{\mathbb{R}}
+
+\newcommand{\X}{\mathbf{X}}
+\newcommand{\y}{\mathbf{y}}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\eps}{\boldsymbol{\varepsilon}}
+\newcommand{\betavec}{\boldsymbol{\beta}}
+\newcommand{\hatbeta}{\hat{\boldsymbol{\beta}}}
+
+% Estilo de codigo para slides
+\definecolor{CodeBg}{RGB}{248,250,252}
+\definecolor{CodeFrame}{RGB}{209,213,219}
+\definecolor{CodeKeyword}{RGB}{0,84,166}
+\definecolor{CodeComment}{RGB}{22,128,81}
+\definecolor{CodeString}{RGB}{180,83,9}
+\definecolor{CodeNumber}{RGB}{107,114,128}
+
+\lstdefinestyle{coursecode}{
+  backgroundcolor=\color{CodeBg},
+  frame=single,
+  rulecolor=\color{CodeFrame},
+  framerule=0.6pt,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{CodeKeyword}\bfseries,
+  commentstyle=\color{CodeComment}\itshape,
+  stringstyle=\color{CodeString},
+  numbers=left,
+  numberstyle=\scriptsize\color{CodeNumber},
+  numbersep=8pt,
+  showstringspaces=false,
+  tabsize=2,
+  breaklines=true,
+  breakatwhitespace=true
+}
+
+% Componente reutilizable para destacar resultados clave
+\newenvironment{resultbox}[1][Resultado clave]
+{\begin{alertblock}{#1}}
+{\end{alertblock}}
+
+\newcommand{\ResultBox}[1]{%
+\begin{resultbox}
+#1
+\end{resultbox}
+}

@@ -1,0 +1,48 @@
+﻿% !TeX root = ../main.tex
+% Input 1: ejemplos de funcionalidades del template
+
+\section{Funcionalidades del template}
+
+\begin{frame}{Funcionalidades disponibles}
+\begin{itemize}
+  \item Entornos matemáticos: teorema, ejemplo, definición, etc.
+  \item Bloque de resultado clave: \texttt{resultbox}.
+  \item Progresión en clase con \texttt{\textbackslash pause}.
+  \item Inclusión de código con \texttt{frame[fragile]} + \texttt{lstlisting}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Ejemplo de teorema}
+\begin{theorem}[Forma general]
+Si se cumplen los supuestos del modelo lineal clásico, el estimador MCO es insesgado.
+\end{theorem}
+\end{frame}
+
+\begin{frame}{Ejemplo de demostración con pausas}
+\textit{Primero se usa linealidad de la esperanza.}
+\pause
+
+\textit{Luego se aplica \(\E(\varepsilon\mid X)=0\).}
+\pause
+
+\textit{Finalmente se concluye insesgamiento.}
+\end{frame}
+
+\begin{frame}{Ejemplo de resultado clave}
+\begin{resultbox}
+Este bloque sirve para destacar conclusiones o mensajes centrales de la clase.
+\end{resultbox}
+\end{frame}
+
+\begin{frame}[fragile]{Ejemplo de inclusión de código}
+\begin{lstlisting}[style=coursecode,language=R,caption={Regresion lineal simple en R}]
+# Ejemplo en R: modelo de regresion lineal simple
+datos <- data.frame(
+  y = c(10, 12, 13, 15, 18),
+  x = c(1, 2, 3, 4, 5)
+)
+
+ajuste <- lm(y ~ x, data = datos)
+summary(ajuste)
+\end{lstlisting}
+\end{frame}

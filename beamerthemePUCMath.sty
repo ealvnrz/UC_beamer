@@ -1,0 +1,133 @@
+﻿\ProvidesPackage{beamerthemePUCMath}[2026/02/19 PUC Matematicas Beamer theme]
+
+\RequirePackage{iftex}
+\RequirePackage{tikz}
+\RequirePackage{graphicx}
+
+% Tipografia institucional UC
+\ifPDFTeX
+  \IfFileExists{roboto.sty}{\RequirePackage[sfdefault]{roboto}}{\RequirePackage{helvet}}
+  \newcommand{\PUCHeadingFamily}{\sffamily}
+\else
+  \RequirePackage{fontspec}
+  \setsansfont{Roboto}
+  \newfontfamily\PUCHeadingFamily{Roboto Slab}
+\fi
+
+% Paleta institucional UC (kitdigital.uc.cl/diseno/color)
+\definecolor{PUCBlue}{HTML}{0176DE}
+\definecolor{PUCBlueDark}{HTML}{0054A6}
+\definecolor{PUCMustard}{HTML}{D7A300}
+\definecolor{PUCText}{HTML}{1F2933}
+\definecolor{PUCCanvas}{HTML}{EEF3F8}
+
+\mode<presentation>
+
+% Grilla: margenes laterales proporcionales al ancho de la diapositiva
+\setbeamersize{text margin left=0.06\paperwidth,text margin right=0.06\paperwidth}
+
+\setbeamercolor{normal text}{fg=PUCText,bg=PUCCanvas}
+\setbeamercolor{background canvas}{bg=PUCCanvas}
+\setbeamercolor{structure}{fg=PUCBlueDark}
+\setbeamercolor{title}{fg=white,bg=PUCBlueDark}
+\setbeamercolor{frametitle}{fg=white,bg=PUCBlueDark}
+\setbeamercolor{subtitle}{fg=white}
+\setbeamercolor{author}{fg=PUCText}
+\setbeamercolor{institute}{fg=PUCBlueDark}
+\setbeamercolor{date}{fg=PUCBlue}
+\setbeamercolor{section in toc}{fg=PUCBlueDark}
+\setbeamercolor{item}{fg=PUCBlueDark}
+\setbeamercolor{block title}{fg=white,bg=PUCBlueDark}
+\setbeamercolor{block body}{fg=PUCText,bg=white}
+\setbeamercolor{block title example}{fg=white,bg=PUCBlue}
+\setbeamercolor{block body example}{fg=PUCText,bg=white}
+\setbeamercolor{block title alerted}{fg=PUCText,bg=PUCMustard}
+\setbeamercolor{block body alerted}{fg=PUCText,bg=white}
+\setbeamercolor{alerted text}{fg=PUCBlueDark}
+
+\setbeamerfont{title}{series=\bfseries,size=\Large}
+\setbeamerfont{frametitle}{series=\bfseries,size=\normalsize}
+\setbeamerfont{subtitle}{series=\bfseries,size=\small}
+\setbeamerfont{normal text}{size=\small}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize item}{\small\raise0.25ex\hbox{\color{PUCBlue}$\blacktriangleright$}}
+\setbeamertemplate{itemize subitem}{\small\raise0.25ex\hbox{\color{PUCBlueDark}$\bullet$}}
+
+% Formas: bloques redondeados + sombra suave
+\setbeamertemplate{blocks}[rounded][shadow=true]
+\setbeamersize{description width=0.55\linewidth}
+\setbeamerfont{block title}{series=\bfseries,size=\small}
+\setbeamerfont{block title alerted}{series=\bfseries,size=\small}
+\setbeamerfont{block title example}{series=\bfseries,size=\small}
+
+% Marca de agua institucional
+\newcommand{\PUCLogoWatermark}{%
+  \IfFileExists{logo-uc-03.pdf}{%
+    \includegraphics[width=0.34\paperwidth]{logo-uc-03.pdf}%
+  }{%
+    \includegraphics[width=0.28\paperwidth]{UCcolor.pdf}%
+  }%
+}
+
+% Fondo institucional
+\setbeamertemplate{background}{
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[PUCCanvas] (current page.south west) rectangle (current page.north east);
+  \end{tikzpicture}
+}
+\logo{}
+
+% Estilo de portada
+\setbeamertemplate{title page}{
+  \begin{tikzpicture}[remember picture,overlay]
+    \fill[PUCBlueDark] (current page.north west) rectangle ([yshift=-1.75cm]current page.north east);
+    \fill[PUCMustard] ([yshift=-1.75cm]current page.north west) rectangle ([yshift=-1.97cm]current page.north east);
+    \node[anchor=south east,opacity=0.16] at ([xshift=-1.10cm,yshift=0.35cm]current page.south east) {\PUCLogoWatermark};
+  \end{tikzpicture}
+  \vspace{0.10cm}
+  \begin{beamercolorbox}[wd=\paperwidth,leftskip=0.06\paperwidth,rightskip=0.06\paperwidth,sep=0.08cm]{title}
+    {\PUCHeadingFamily\usebeamerfont{title}\inserttitle\\[-0.2ex]}
+    {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle}
+  \end{beamercolorbox}
+
+  \vspace*{1.8cm}
+  \vfill
+  \begin{beamercolorbox}[wd=\paperwidth,leftskip=0.06\paperwidth,rightskip=0.06\paperwidth,sep=0.2cm]{author}
+    \insertauthor
+  \end{beamercolorbox}
+  \vspace{0.9cm}
+  \begin{beamercolorbox}[wd=\paperwidth,leftskip=0.06\paperwidth,rightskip=0.06\paperwidth,sep=0.2cm]{institute}
+    \insertinstitute
+  \end{beamercolorbox}
+  \vspace{0.55cm}
+  \begin{beamercolorbox}[wd=\paperwidth,leftskip=0.06\paperwidth,rightskip=0.06\paperwidth,sep=0.2cm]{date}
+    \insertdate
+  \end{beamercolorbox}
+  \vfill
+}
+
+\setbeamertemplate{frametitle}{
+  \nointerlineskip
+  \begin{beamercolorbox}[wd=\paperwidth,ht=2.85ex,dp=1.2ex,leftskip=0.06\paperwidth,rightskip=0.06\paperwidth]{frametitle}
+    {\PUCHeadingFamily\usebeamerfont{frametitle}\insertframetitle}
+  \end{beamercolorbox}
+  \nointerlineskip
+  \begin{beamercolorbox}[wd=\paperwidth,ht=0.08cm,dp=0cm]{normal text}
+    \color{PUCMustard}\rule{\paperwidth}{0.08cm}
+  \end{beamercolorbox}
+}
+
+% Encabezado y pie
+\setbeamertemplate{headline}{}
+
+\setbeamertemplate{footline}{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=3.0ex,dp=1.2ex,rightskip=.6cm plus1fil]{date in head/foot}%
+    \color{PUCBlueDark}\hfill\insertframenumber{} / \inserttotalframenumber
+  \end{beamercolorbox}}%
+}
+
+\mode<all>
+
